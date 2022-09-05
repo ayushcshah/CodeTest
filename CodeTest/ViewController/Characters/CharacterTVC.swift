@@ -13,7 +13,7 @@ class CharacterTVC: UITableViewCell {
     static let nibFile = "CharacterTVC"
 
     @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var ivDisplayPicture: UIImageView!
+    @IBOutlet weak var ivDisplayPicture: CTImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +22,7 @@ class CharacterTVC: UITableViewCell {
     
     func configureCell(with character: Character) {
         lblName.text = character.name
+        ivDisplayPicture.loadImageFrom(URL: character.image.mediumURL)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

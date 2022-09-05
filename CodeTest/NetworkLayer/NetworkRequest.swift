@@ -17,6 +17,8 @@ class NetworkRequest{
     let apiKeyParams = ["api_key" : "a3c8f1c7ea1ad249deb201014d6b0b852e1399b2",
                         "format":"json"]
     
+    private var imageTask: URLSessionDataTask!
+    let imageCache = NSCache<AnyObject, NSData>()
     
     func getCharacters(withOffset offset: Int,
                      limit: Int,
@@ -68,12 +70,43 @@ class NetworkRequest{
         }.resume()
     }
     
+    func getImage(from url:URL, with completion: @escaping(Result<Data, CTError>) -> ()) {
+        var imageTask = NetworkRequest.networkRequest.imageTask
+        if let task = imageTask {
+            task.cancel()
+        }
+        
+        let imageCache = NetworkRequest.networkRequest.imageCache
+        if let imageFromCache = imageCache.object(forKey:url.absoluteString as AnyObject){
+            completion(Result.success(Data(referencing: imageFromCache)))
+            return
+        }
+        
+        imageTask = URLSession.shared.dataTask(with: url) {[weak self] data, response, error in
+            let errorValidation = self?.checkResponseForError(data: data,
+                                                             response: response,
+                                                             error: error)
+            if let errorValidation = errorValidation {
+                completion(.failure(errorValidation))
+                return
+            }
+            guard let data = data else {
+                print("Raise Error. Invalid Data")
+                completion(Result.failure(.dataNotFound))
+                return
+            }
+            self?.imageCache.setObject(data as NSData, forKey: url.absoluteString as AnyObject)
+            completion(.success(data))
+        }
+        imageTask?.resume()
+    }
+    
     func checkResponseForError(data: Data?,
                                response:URLResponse?,
-                               error:Error?) -> Error?{
+                               error:Error?) -> CTError?{
         
         if let error = error {
-            return error
+            return error as? CTError
         }
         if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
             return CTError.serverError(statusCode: response.statusCode)
