@@ -10,6 +10,7 @@ import UIKit
 class CTImageView: UIImageView {
 
     let loadingIndicator = UIActivityIndicatorView(style: .medium)
+    let networkRequest = NetworkRequest()
     
     func loadImageFrom(URL strUrl:String,
                        defaultImage: UIImage = UIImage(named: "profilePicture")!) -> () {
@@ -20,7 +21,7 @@ class CTImageView: UIImageView {
         image = nil
         addLoadingIndicator()
         
-        NetworkRequest.networkRequest.getImage(from: url) {[weak self] result in
+        networkRequest.getImage(from: url) { [weak self]result in
             switch result{
             case .success(let data):
                 self?.set(image: UIImage(data: data) ?? defaultImage)
@@ -37,7 +38,7 @@ class CTImageView: UIImageView {
     }
     
     func set(image: UIImage){
-        Task{
+        Task {
             self.image = image
         }
     }

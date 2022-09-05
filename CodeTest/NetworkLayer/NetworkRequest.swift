@@ -71,7 +71,7 @@ class NetworkRequest{
     }
     
     func getImage(from url:URL, with completion: @escaping(Result<Data, CTError>) -> ()) {
-        var imageTask = NetworkRequest.networkRequest.imageTask
+
         if let task = imageTask {
             task.cancel()
         }
