@@ -9,15 +9,15 @@ import UIKit
 
 class CharactersVC: UIViewController {
 
-    let charactersVM = CharactersVM()
+    var charactersVM: CharactersVM!
     
     @IBOutlet weak var charactersTV: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        charactersVM.delegate = self
-        charactersVM.getCharacters()
+        charactersVM?.delegate = self
+        charactersVM?.getCharacters()
         charactersTV.dataSource = self
     }
 }
