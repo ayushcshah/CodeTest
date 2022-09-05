@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol CharactersViewDelegate: AnyObject {
+protocol CharactersVMDelegate: AnyObject {
     func onSuccessGet(characters: [Character]) -> Void
     func onFailure(error: String) -> Void
 }
 
 class CharactersVM {
     
-    weak var delegate: CharactersViewDelegate?
+    weak var delegate: CharactersVMDelegate?
     let networkRequest = NetworkRequest.networkRequest
     var characters: [Character] = []
     var offset = 0
