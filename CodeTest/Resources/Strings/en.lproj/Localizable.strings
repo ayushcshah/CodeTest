@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  CodeTest
+
+  Created by Ayush Shah on 9/5/22.
+  
+*/
+"loading" = "Loading";
+"please_check_URL" = "Please Check URL";
+"error_while_decoding_JSON" = "Error While Decoding JSON";
+"no_data_received_from_server" = "No Data received from Server";
+"transport_error" = "Transport Error";
+"serverError" = "Server Error: ";
+"no_data" = "No Data";

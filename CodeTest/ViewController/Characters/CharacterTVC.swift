@@ -22,7 +22,7 @@ class CharacterTVC: UITableViewCell {
     }
     
     func showLoadingIndicator(){
-        lblName.text = "Loading"
+        lblName.text = NSLocalizedString("loading", comment: "")
         ivDisplayPicture.set(image: UIImage(named: "profilePicture")!)
         loadingIndicator.startAnimating()
     }
