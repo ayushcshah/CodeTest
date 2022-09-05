@@ -13,7 +13,7 @@ struct CharactersResponse: Codable {
     let limit, offset, numberOfPageResults, numberOfTotalResults: Int
     let statusCode: Int
     let Characters: [Character]
-    let version: String
+    let version: String?
 
     enum CodingKeys: String, CodingKey {
         case error, limit, offset
@@ -27,18 +27,20 @@ struct CharactersResponse: Codable {
 
 // MARK: - Character Result
 struct Character: Codable {
-    let aliases: String
+    let aliases: String?
     let apiDetailURL: String
     let birthday: String?
-    let dateAdded, dateLastUpdated, deck, resultDescription: String
-    let firstAppearedInGame: FirstAppearedInGame
+    let dateAdded, dateLastUpdated: String
+    let deck, resultDescription: String?
+    let firstAppearedInGame: FirstAppearedInGame?
     let gender: Int
     let guid: String
     let id: Int
     let image: Image
     let imageTags: [ImageTag]
     let lastName: String?
-    let name, realName: String
+    let name: String
+    let realName: String?
     let siteDetailURL: String
 
     enum CodingKeys: String, CodingKey {
@@ -103,4 +105,3 @@ struct ImageTag: Codable {
         case name, total
     }
 }
-
