@@ -15,12 +15,12 @@ class CTImageView: UIImageView {
     func loadImageFrom(URL strUrl:String,
                        defaultImage: UIImage = UIImage(named: "profilePicture")!) -> () {
         guard let url = URL(string: strUrl) else {
+            image = defaultImage
             return
         }
         
         image = nil
         addLoadingIndicator()
-        
         networkRequest.getImage(from: url) { [weak self]result in
             switch result{
             case .success(let data):
@@ -29,9 +29,13 @@ class CTImageView: UIImageView {
                 break
 
             case .failure(let error):
-                print(error.localizedDescription)
-                self?.set(image: defaultImage)
-                self?.removeLoadingIndicator()
+                switch error {
+                case CTError.dataNotFound: break
+                default:
+                    print(error.localizedDescription)
+                    self?.set(image: defaultImage)
+                    self?.removeLoadingIndicator()
+                }
                 break
             }
         }
