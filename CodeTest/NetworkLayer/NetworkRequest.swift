@@ -14,7 +14,7 @@ class NetworkRequest{
     let mainURLstr = "https://www.giantbomb.com/api/"
     let charactersURLstr = "characters/"
     let apiSuccessErrorStr = "OK"
-    let apiKeyParams = ["api_key" : "a3c8f1c7ea1ad249deb201014d6b0b852e1399b",
+    let apiKeyParams = ["api_key" : "a3c8f1c7ea1ad249deb201014d6b0b852e1399b2",
                         "format":"json"]
     
     
