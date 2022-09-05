@@ -8,7 +8,7 @@
 import UIKit
 
 class CharactersVC: UIViewController {
-
+    
     var charactersVM: CharactersVM!
     
     @IBOutlet weak var charactersTV: UITableView!
@@ -40,14 +40,20 @@ extension CharactersVC: CharactersVMDelegate {
 // MARK: TableView DataSource and Delegate
 extension CharactersVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return charactersVM.characters.count
+        return charactersVM.characters.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let charCell = charactersTV.dequeueReusableCell(withIdentifier: CharacterTVC.identifier,
-                                                             for: indexPath) as! CharacterTVC
-        charCell.configureCell(with: charactersVM.characters[indexPath.row])
-        return charCell
+        let cell = charactersTV.dequeueReusableCell(withIdentifier: CharacterTVC.identifier,
+                                                        for: indexPath) as! CharacterTVC
+        if (indexPath.row < charactersVM.characters.count) {
+            cell.configureCell(with: charactersVM.characters[indexPath.row])
+            return cell
+        }
+        else{
+            cell.showLoadingIndicator()
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

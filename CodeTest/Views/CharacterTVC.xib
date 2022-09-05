@@ -32,6 +32,9 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bvx-65-Ry5">
+                        <rect key="frame" x="188.5" y="46.5" width="37" height="37"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wGc-Re-jz3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="2h6-v3-lfx"/>
@@ -39,13 +42,16 @@
                     <constraint firstItem="wGc-Re-jz3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="Ewf-hn-FnW"/>
                     <constraint firstItem="dxV-rX-YXA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="LHe-cV-6Hg"/>
                     <constraint firstItem="dxV-rX-YXA" firstAttribute="leading" secondItem="wGc-Re-jz3" secondAttribute="trailing" constant="8" symbolic="YES" id="Q0u-YJ-i3l"/>
+                    <constraint firstItem="bvx-65-Ry5" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="QpK-JF-0KA"/>
                     <constraint firstAttribute="trailing" secondItem="dxV-rX-YXA" secondAttribute="trailing" constant="20" symbolic="YES" id="fSH-6z-Xnz"/>
+                    <constraint firstItem="bvx-65-Ry5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g3G-0f-qwK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="ivDisplayPicture" destination="wGc-Re-jz3" id="54u-KQ-NsY"/>
                 <outlet property="lblName" destination="dxV-rX-YXA" id="5IS-8x-wFA"/>
+                <outlet property="loadingIndicator" destination="bvx-65-Ry5" id="tGx-xO-2mR"/>
             </connections>
             <point key="canvasLocation" x="244.92753623188409" y="93.75"/>
         </tableViewCell>
