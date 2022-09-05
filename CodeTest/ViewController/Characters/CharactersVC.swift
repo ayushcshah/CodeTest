@@ -18,6 +18,8 @@ class CharactersVC: UIViewController {
         // Do any additional setup after loading the view.
         charactersVM?.delegate = self
         charactersVM?.getCharacters()
+        let cellNib = UINib(nibName: CharacterTVC.nibFile, bundle: nil)
+        charactersTV.register(cellNib, forCellReuseIdentifier: CharacterTVC.identifier)
         charactersTV.dataSource = self
     }
 }
@@ -25,9 +27,6 @@ class CharactersVC: UIViewController {
 // MARK: Characters View Model DataSource
 extension CharactersVC: CharactersVMDelegate {
     func onSuccessGet(characters: [Character]) {
-        for character in characters {
-            print(character.name)
-        }
         Task{
             charactersTV.reloadData()
         }
@@ -38,15 +37,21 @@ extension CharactersVC: CharactersVMDelegate {
     }
 }
 
-// MARK: TableView DataSource
-extension CharactersVC: UITableViewDataSource {
+// MARK: TableView DataSource and Delegate
+extension CharactersVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return charactersVM.characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let characterCell = charactersTV.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        characterCell.textLabel?.text = charactersVM.characters[indexPath.row].name
-        return characterCell
+        let charCell = charactersTV.dequeueReusableCell(withIdentifier: CharacterTVC.identifier,
+                                                             for: indexPath) as! CharacterTVC
+        charCell.configureCell(with: charactersVM.characters[indexPath.row])
+        return charCell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
+    }
+    
 }

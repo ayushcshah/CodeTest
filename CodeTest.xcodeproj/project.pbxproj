@@ -13,6 +13,8 @@
 		2ACCAA7128C53FBF00C101E3 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCAA7028C53FBF00C101E3 /* NetworkRequest.swift */; };
 		2ACCAA7428C5822D00C101E3 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCAA7328C5822D00C101E3 /* CTError.swift */; };
 		2ACCAA7728C5AB7800C101E3 /* CharactersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCAA7628C5AB7800C101E3 /* CharactersVM.swift */; };
+		2ACCAA7D28C64CD500C101E3 /* CharacterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCAA7B28C64CD500C101E3 /* CharacterTVC.swift */; };
+		2ACCAA7E28C64CD500C101E3 /* CharacterTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCAA7C28C64CD500C101E3 /* CharacterTVC.xib */; };
 		2E25C25625CC61E8006AEAF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25C25525CC61E8006AEAF5 /* AppDelegate.swift */; };
 		2E25C25A25CC61E8006AEAF5 /* CharactersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25C25925CC61E8006AEAF5 /* CharactersVC.swift */; };
 		2E25C25F25CC61F0006AEAF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E25C25E25CC61F0006AEAF5 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		2ACCAA7028C53FBF00C101E3 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkRequest.swift; path = NetworkLayer/NetworkRequest.swift; sourceTree = "<group>"; };
 		2ACCAA7328C5822D00C101E3 /* CTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTError.swift; sourceTree = "<group>"; };
 		2ACCAA7628C5AB7800C101E3 /* CharactersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersVM.swift; sourceTree = "<group>"; };
+		2ACCAA7B28C64CD500C101E3 /* CharacterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTVC.swift; sourceTree = "<group>"; };
+		2ACCAA7C28C64CD500C101E3 /* CharacterTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTVC.xib; sourceTree = "<group>"; };
 		2E25C25225CC61E8006AEAF5 /* CodeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E25C25525CC61E8006AEAF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E25C25925CC61E8006AEAF5 /* CharactersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersVC.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 		2ACCAA6028C5352D00C101E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2ACCAA7C28C64CD500C101E3 /* CharacterTVC.xib */,
 				2ACCAA6128C5352D00C101E3 /* LaunchScreen.storyboard */,
 				2ACCAA6328C5352D00C101E3 /* Main.storyboard */,
 			);
@@ -106,7 +111,7 @@
 		2ACCAA6728C5353C00C101E3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2E25C25925CC61E8006AEAF5 /* CharactersVC.swift */,
+				2ACCAA7A28C64CA300C101E3 /* Characters */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -150,6 +155,15 @@
 				2ACCAA7628C5AB7800C101E3 /* CharactersVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2ACCAA7A28C64CA300C101E3 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				2E25C25925CC61E8006AEAF5 /* CharactersVC.swift */,
+				2ACCAA7B28C64CD500C101E3 /* CharacterTVC.swift */,
+			);
+			path = Characters;
 			sourceTree = "<group>";
 		};
 		2E25C24925CC61E8006AEAF5 = {
@@ -312,6 +326,7 @@
 			files = (
 				2E25C25F25CC61F0006AEAF5 /* Assets.xcassets in Resources */,
 				2ACCAA6628C5352D00C101E3 /* Main.storyboard in Resources */,
+				2ACCAA7E28C64CD500C101E3 /* CharacterTVC.xib in Resources */,
 				2ACCAA6528C5352D00C101E3 /* LaunchScreen.storyboard in Resources */,
 				2E25C28925CC64A3006AEAF5 /* Characters.json in Resources */,
 			);
@@ -345,6 +360,7 @@
 				2ACCAA7128C53FBF00C101E3 /* NetworkRequest.swift in Sources */,
 				2ACCAA6F28C53EE300C101E3 /* CharactersResponse.swift in Sources */,
 				2ACCAA7428C5822D00C101E3 /* CTError.swift in Sources */,
+				2ACCAA7D28C64CD500C101E3 /* CharacterTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
