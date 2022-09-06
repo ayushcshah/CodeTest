@@ -17,7 +17,6 @@ class CharactersVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         charactersVM?.delegate = self
-        charactersVM?.getCharacters()
         let cellNib = UINib(nibName: CharacterTVC.nibFile, bundle: nil)
         charactersTV.register(cellNib, forCellReuseIdentifier: CharacterTVC.identifier)
         charactersTV.dataSource = self
@@ -58,6 +57,12 @@ extension CharactersVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.row == charactersVM.characters.count){
+            charactersVM.getCharacters()
+        }
     }
     
 }
