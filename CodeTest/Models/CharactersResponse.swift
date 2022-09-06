@@ -33,7 +33,7 @@ struct Character: Codable {
     let dateAdded, dateLastUpdated: String
     let deck, resultDescription: String?
     let firstAppearedInGame: FirstAppearedInGame?
-    let gender: Int
+    let gender: Int?
     let guid: String
     let id: Int
     let image: Image
@@ -97,7 +97,7 @@ struct Image: Codable {
 // MARK: - ImageTag
 struct ImageTag: Codable {
     let apiDetailURL: String
-    let name: String
+    let name: String?
     let total: Int
 
     enum CodingKeys: String, CodingKey {
