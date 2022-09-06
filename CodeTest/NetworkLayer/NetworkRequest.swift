@@ -9,8 +9,6 @@ import Foundation
 
 class NetworkRequest{
     
-    static let networkRequest = NetworkRequest()
-    
     let mainURLstr = "https://www.giantbomb.com/api/"
     let charactersURLstr = "characters/"
     let apiSuccessErrorStr = "OK"
@@ -20,10 +18,14 @@ class NetworkRequest{
     private var imageTask: URLSessionDataTask!
     let imageCache = NSCache<AnyObject, NSData>()
     
+    init() {
+        imageCache.name = "imageCache"
+    }
+    
     func getCharacters(withOffset offset: Int,
                      limit: Int,
                      optionalParams: [String:String] = [:],
-                     completion:@escaping (Result<CharactersResponse, Error>) -> ()) {
+                     completion: @escaping (Result<CharactersResponse, Error>) -> ()) {
         
         let component = URLComponents(string: mainURLstr + charactersURLstr)
         guard var component = component else {
@@ -76,7 +78,6 @@ class NetworkRequest{
             task.cancel()
         }
         
-        let imageCache = NetworkRequest.networkRequest.imageCache
         if let imageFromCache = imageCache.object(forKey:url.absoluteString as AnyObject){
             completion(Result.success(Data(referencing: imageFromCache)))
             return

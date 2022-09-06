@@ -15,7 +15,7 @@ protocol CharactersVMDelegate: AnyObject {
 class CharactersVM {
     
     weak var delegate: CharactersVMDelegate?
-    let networkRequest = NetworkRequest.networkRequest
+    let networkRequest = NetworkRequest()
     var characters: [Character] = []
     var offset = 0
     let limit = 100
